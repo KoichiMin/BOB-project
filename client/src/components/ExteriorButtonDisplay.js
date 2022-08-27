@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { CircularProgress } from "@mui/material";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 
 const ExteriorButtonDisplay = ({activate}) =>{
     const [trades, setTrades] = useState([])
@@ -19,7 +19,7 @@ const ExteriorButtonDisplay = ({activate}) =>{
             {    trades ?
                 trades.map((element) =>{
                     return(
-                        <StyledButton>{element}</StyledButton>
+                        <Link to={`/trades/${element}`}>{element}</Link>
                     ) 
                 })
                 :                   
@@ -37,8 +37,8 @@ const Wrapper = styled.div`
 
 `
 
-const StyledButton = styled.button`
-    border: none;
-`
+// const StyledButton = styled.button`
+//     border: none;
+// `
 
 export default ExteriorButtonDisplay;

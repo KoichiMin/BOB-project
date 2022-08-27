@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {CircularProgress} from "@mui/material"
 import styled from "styled-components";
 
@@ -17,7 +18,7 @@ const InteriorButtonDisplay = ({activate}) =>{
             {    trades ?
                 trades.map((element) =>{
                     return(
-                        <StyledButton>{element}</StyledButton>
+                        <Link to={`/trades/${element}`}>{element}</Link>
                     ) 
                 })
                 :                   
@@ -35,9 +36,9 @@ const Wrapper = styled.div`
 
 `
 
-const StyledButton = styled.button`
-    border: none;
-`
+// const StyledLink = styled.Link`
+//     /* border: none; */
+// `
 
 
 export default InteriorButtonDisplay;

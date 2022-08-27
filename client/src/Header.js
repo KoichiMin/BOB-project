@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components"
 import LoginButton from "./components/LoginButton";
 import LogoutButton from "./components/LogoutButton";
@@ -5,9 +6,9 @@ const Header = () =>{
     return(
         <Wrapper>
             <div className="leftSide">
-                <div>logo</div>
-                <div>Home</div>
-                <div>Trades</div>
+                <Link to={"/"}>logo</Link>
+                {/* <div>Home</div>
+                <div>Trades</div> */}
             </div>
                 <LoginButton/>
                 <LogoutButton/>

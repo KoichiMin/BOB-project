@@ -9,7 +9,8 @@ const {
     getAllInterior,
     getIntTrades,
     getExtTrades,
-    getTradeCompanies
+    getTradeCompanies,
+    getTradeDescription
 } = require("./CompanyHandlers")
 
 const{
@@ -43,6 +44,9 @@ app.get("/get-Exterior/trades", getExtTrades)
 
 // get all companies within a certain trade
 app.get("/get-companies/:trade", getTradeCompanies)
+
+// get specific description of trade
+app.get("/get-description/:trade", getTradeDescription)
 
   //*********************************************************
   // Endpoints for Auth0

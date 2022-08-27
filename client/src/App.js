@@ -7,11 +7,11 @@ import TradesPage from "./pages/TradesPage";
 const App = () => {
   return (
     <BrowserRouter>
-      <main>       
         <Header/>
+      <main>       
         <Routes>
           <Route exact path="/" element={<HomePage/>}/>
-          <Route exact path="/trades" element={<TradesPage/>}/>
+          <Route  path="/trades/:trade" element={<TradesPage/>}/>
         </Routes>
       </main>
     </BrowserRouter>

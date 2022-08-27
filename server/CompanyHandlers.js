@@ -97,12 +97,13 @@ const getExtTrades = async (req, res) =>{
 }
 
 // get all companies within a certain trade
-const getTradeCompanies = (req, res) =>{
+const getTradeCompanies = async (req, res) =>{
         const {trade} = req.params;
-    try{
-        
+    try{     
         await client.connect();
         const db = client.db("Companies");
+        const result = await db.collection("CompaniesInfo").find({trade: trade}).toArray();
+        res.status(200).json({ message: "success", data: result})
     }
     catch (err) {
         res.status(404).json({ status: 404, message: err.message })
@@ -110,11 +111,28 @@ const getTradeCompanies = (req, res) =>{
     }
 }
 
+
+// get specific description of trade
+const getTradeDescription = async (req, res) =>{
+    const {trade} = req.params;
+    try{     
+        await client.connect();
+        const db = client.db("Companies");
+        const result = await db.collection("TradeDescription").find({trade: trade}).toArray();
+        res.status(200).json({ message: "success", data: result})
+    }
+    catch (err) {
+        res.status(404).json({ status: 404, message: err.message })
+        client.close()
+    }
+} 
+
 module.exports = {
     getAllCompanies,
     getAllExterior,
     getAllInterior,
     getIntTrades,
     getExtTrades,
-    getTradeCompanies
+    getTradeCompanies,
+    getTradeDescription
 };

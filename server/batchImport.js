@@ -7,14 +7,30 @@ const options = {
     
 }
 
-const companies = require("./data/company.json");
+// const companies = require("./data/company.json");
 
-const importCompanies = async () =>{
-    const client = new MongoClient(MONGO_URI, options);
-    await client.connect();
-    const db = client.db("Companies");
-    await db.collection("CompaniesInfo").insertMany(companies);
-    client.close();
+const tradeDescription = require("./data/tradeDescription.json");
+
+const importTradeDescription = async () =>{
+        const client = new MongoClient(MONGO_URI, options);
+        await client.connect();
+        const db = client.db("Companies");
+        await db.collection("TradeDescription").insertMany(tradeDescription);
+        client.close();
+
+    
 }
 
-importCompanies();
+// const importCompanies = async () =>{
+//     const client = new MongoClient(MONGO_URI, options);
+//     await client.connect();
+//     const db = client.db("Companies");
+//     await db.collection("CompaniesInfo").insertMany(companies);
+//     client.close();
+// }
+
+
+importTradeDescription();
+// importCompanies();
+
+
