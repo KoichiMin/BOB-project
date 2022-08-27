@@ -4,6 +4,7 @@ const { MONGO_URI } = process.env;
 
 const client = new MongoClient(MONGO_URI);
 
+// get all companies 
 const getAllCompanies = async (req, res) =>{
     try{
         await client.connect();
@@ -19,6 +20,7 @@ const getAllCompanies = async (req, res) =>{
     }
 }
 
+//get all Interior companies
 const getAllInterior = async (req, res) =>{
     try{
         await client.connect();
@@ -33,6 +35,7 @@ const getAllInterior = async (req, res) =>{
     }
 }
 
+// get all Exterior companies
 const getAllExterior = async (req, res) =>{
     try{
         await client.connect();
@@ -47,6 +50,7 @@ const getAllExterior = async (req, res) =>{
     }
 }
 
+// get all Interior trades
 const getIntTrades = async (req, res) =>{
     try{
         await client.connect();
@@ -68,7 +72,7 @@ const getIntTrades = async (req, res) =>{
     }
 }
 
-
+// get all Exterior trades
 const getExtTrades = async (req, res) =>{
     try{
         await client.connect();
@@ -92,10 +96,25 @@ const getExtTrades = async (req, res) =>{
     }
 }
 
+// get all companies within a certain trade
+const getTradeCompanies = (req, res) =>{
+        const {trade} = req.params;
+    try{
+        
+        await client.connect();
+        const db = client.db("Companies");
+    }
+    catch (err) {
+        res.status(404).json({ status: 404, message: err.message })
+        client.close()
+    }
+}
+
 module.exports = {
     getAllCompanies,
     getAllExterior,
     getAllInterior,
     getIntTrades,
-    getExtTrades
+    getExtTrades,
+    getTradeCompanies
 };

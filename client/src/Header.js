@@ -1,5 +1,6 @@
 import styled from "styled-components"
-
+import LoginButton from "./components/LoginButton";
+import LogoutButton from "./components/LogoutButton";
 const Header = () =>{
     return(
         <Wrapper>
@@ -8,7 +9,8 @@ const Header = () =>{
                 <div>Home</div>
                 <div>Trades</div>
             </div>
-                <div>sign in</div>
+                <LoginButton/>
+                <LogoutButton/>
         </Wrapper>
     )
 }
