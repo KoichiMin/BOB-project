@@ -104,8 +104,10 @@ const getTradeCompanies = async (req, res) =>{
         const db = client.db("Companies");
         const result = await db.collection("CompaniesInfo").find({trade: trade}).toArray();
         res.status(200).json({ message: "success", data: result})
+        // client.close()
     }
     catch (err) {
+        console.log(err);
         res.status(404).json({ status: 404, message: err.message })
         client.close()
     }
@@ -114,18 +116,35 @@ const getTradeCompanies = async (req, res) =>{
 
 // get specific description of trade
 const getTradeDescription = async (req, res) =>{
-    const {trade} = req.params;
+    const { trade } = req.params;
     try{     
         await client.connect();
         const db = client.db("Companies");
         const result = await db.collection("TradeDescription").find({trade: trade}).toArray();
         res.status(200).json({ message: "success", data: result})
+        // client.close();
     }
     catch (err) {
         res.status(404).json({ status: 404, message: err.message })
         client.close()
     }
 } 
+
+// get a specific company with the params
+const getSpecificCompany = async (req, res) =>{
+    const { company } = req.params;
+    try{
+        await client.connect();
+        const db = client.db("Companies")
+        const result = await db.collection("CompaniesInfo").find({ company: company}).toArray();
+        res.status(200).json({message: "success!", data: result});
+        client.close();
+    }
+    catch (err) {
+        res.status(404).json({ status: 404, message: err.message })
+        client.close()
+    }
+}
 
 module.exports = {
     getAllCompanies,
@@ -134,5 +153,6 @@ module.exports = {
     getIntTrades,
     getExtTrades,
     getTradeCompanies,
-    getTradeDescription
+    getTradeDescription,
+    getSpecificCompany
 };
