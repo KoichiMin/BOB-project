@@ -1,23 +1,24 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useEffect } from "react";
+// import { useEffect } from "react";
+
 
 const UserProfile = () =>{
     const { user, isAuthenticated, isLoading} = useAuth0();
-    // console.log(isAuthenticated);
-    //console.log(user)
-    // useEffect(() =>{
-    //     fetch("/send-info", {
-    //         method: 'POST',
-    //         headers : {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({data: user})
-    //     })
-    //     .then(res => res.json())
-    //     .then((data) =>{
-    //         //console.log(data)
-    //     })
-    // }, [])
+    
+        if(isAuthenticated){
+            fetch("/send-info", {
+                method: 'POST',
+                headers : {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({data: user})
+            })
+            .then(res => res.json())
+            .then((data) =>{
+                // console.log(data)
+            })       
+        }
     
     if(isLoading){
         return <div>Loading!</div>

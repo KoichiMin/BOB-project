@@ -10,11 +10,9 @@ root.render(
     domain='dev-jhze9czt.us.auth0.com'
     clientId='fSC4UwM5Ex24d6vtJltlIGZOY7AOT45M'
     redirectUri={window.location.origin}
-  >
-    <React.StrictMode>
+  >   
       <GlobalStyles />
       <App />
-    </React.StrictMode>
   </Auth0Provider>
 );
 

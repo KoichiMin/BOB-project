@@ -9,20 +9,23 @@ const TradesPage = () =>{
     const [companies, setCompanies] = useState(null);
     const [description, setDescription] = useState(null);
 
-    
     useEffect(() =>{
-        fetch(`/get-companies/${trade}`)
-            .then((res) => res.json())
-            .then((data) =>{
-                //console.log(data.data);
-                setCompanies(data.data);
-            })
         fetch(`/get-description/${trade}`)
             .then((res) => res.json())
             .then((data) =>{
                 //console.log(data.data[0]);
                 setDescription(data.data[0].description);
             })
+            .then(() =>{
+                fetch(`/get-companies/${trade}`)
+                    .then((res) => res.json())
+                    .then((data) =>{
+                        //console.log(data.data);
+                        setCompanies(data.data);
+                    })
+
+            })
+            
 
 
     }, [])

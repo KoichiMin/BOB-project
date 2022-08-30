@@ -2,7 +2,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components"
 import LoginButton from "./components/LoginButton";
 import LogoutButton from "./components/LogoutButton";
+import { useAuth0 } from "@auth0/auth0-react";
 const Header = () =>{
+    const { user } = useAuth0();
+
     return(
         <Wrapper>
             <div className="leftSide">
@@ -10,8 +13,10 @@ const Header = () =>{
                 {/* <div>Home</div>
                 <div>Trades</div> */}
             </div>
-                <LoginButton/>
+            {user ?
                 <LogoutButton/>
+                :
+                <LoginButton/>}
         </Wrapper>
     )
 }
