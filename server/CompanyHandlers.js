@@ -146,6 +146,39 @@ const getSpecificCompany = async (req, res) =>{
     }
 }
 
+// get all the trades in the database
+const getAllTrades = async (req, res) =>{
+    try{
+        await client.connect();
+        const db = client.db("Companies");
+        const exterior = await db.collection("CompaniesInfo").find({category: "Exterior"}).toArray();
+        const interior = await db.collection("CompaniesInfo").find({category: "Interior"}).toArray();
+        client.close();
+
+        let trades = [];
+
+        for(let i in exterior){
+            if(trades.indexOf(exterior[i].trade) < 0){
+                trades.push(exterior[i].trade)
+            }
+        }
+
+        for(let i in interior){
+            if(trades.indexOf(interior[i].trade) < 0){
+                trades.push(interior[i].trade)
+            }
+        }
+
+        res.status(200).json({ message: "success", data: trades})
+
+    }
+    catch (err) {
+        res.status(404).json({ status: 404, message: err.message })
+        client.close()
+    }
+}
+
+
 module.exports = {
     getAllCompanies,
     getAllExterior,
@@ -154,5 +187,6 @@ module.exports = {
     getExtTrades,
     getTradeCompanies,
     getTradeDescription,
-    getSpecificCompany
+    getSpecificCompany,
+    getAllTrades
 };

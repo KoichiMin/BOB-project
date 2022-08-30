@@ -10,8 +10,7 @@ const Header = () =>{
         <Wrapper>
             <div className="leftSide">
                 <Link to={"/"}>logo</Link>
-                {/* <div>Home</div>
-                <div>Trades</div> */}
+                <Link to={"/profile"}>profile</Link>
             </div>
             {user ?
                 <LogoutButton/>
@@ -28,6 +27,7 @@ const Wrapper = styled.div`
 
     .leftSide{
         display: flex;
+        gap: 20px;
     }
 `
 

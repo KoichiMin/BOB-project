@@ -12,11 +12,13 @@ const {
     getExtTrades,
     getTradeCompanies,
     getTradeDescription,
-    getSpecificCompany
+    getSpecificCompany,
+    getAllTrades
 } = require("./CompanyHandlers")
 
 const{
-    sendUserInfo
+    sendUserInfo,
+    getValidation
 } = require("./AuthHandlers")
 
 // to get some more info like the type of request and endpoint in the terminal
@@ -26,6 +28,8 @@ app.use(express.urlencoded({ extended: false }))
 
 // used to be able to read a json object from the frontend
 app.use(express.json());
+app.use(bodyParser.json());
+
 
   //*********************************************************
   // Endpoints for COMPANIES
@@ -57,11 +61,18 @@ app.get("/get-description/:trade", getTradeDescription)
 // get a specific company
 app.get("/get-specific-company/:company", getSpecificCompany)
 
+// get all the trades
+app.get("/get-all-trades", getAllTrades)
+
+
+
   //*********************************************************
   // Endpoints for Auth0
   //*********************************************************
 // app.use(bodyParser.json());
 
+// validate that the user has or hasn't got a company profile
+app.get("/validate-info/:user", getValidation)
 
 
 // receive the login info from the frontend and send it to the database
@@ -70,12 +81,12 @@ app.post("/send-info", sendUserInfo)
 
 
  // Catch all if nothing works
-app.get('*', (req, res) => {
-  res.status(404).json({
-    status: 404,
-    message: "This is not what you're looking for.",
-  });
-});
+// app.get('*', (req, res) => {
+//   res.status(404).json({
+//     status: 404,
+//     message: "This is not what you're looking for.",
+//   });
+// });
 
 
 app.listen(port, () => {
