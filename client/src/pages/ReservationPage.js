@@ -58,21 +58,22 @@ const ReservationPage = ({companyInfo}) =>{
                 <StyledTitle>Reservation</StyledTitle>
                     <InputContainer>
                     <h1>{companyInfo.company}</h1>
+                    <h1>{companyInfo.description}</h1>
                     <h1>Price per Hour: {companyInfo.price}</h1>
                     </InputContainer>
                     <form onSubmit={handleSubmit}>
 
                     <InputContainer>
-                        <StyledLabel>Card Holder Name</StyledLabel>
+                        <StyledLabel>Full Name</StyledLabel>
                         <StyledInput required={true} type="text" placeholder="Card Holder Name"></StyledInput>
                     </InputContainer>
 
                     <InputContainer>
-                        <StyledLabel>Card Number</StyledLabel>
+                        <StyledLabel>Phone Number</StyledLabel>
                         <StyledInput required={true} type="text" placeholder="Card Number"></StyledInput>
                     </InputContainer>
 
-                    <InputContainer2>
+                    {/* <InputContainer2>
 
                         <InputContainer>
                             <StyledLabel>Expiry Date</StyledLabel>
@@ -84,7 +85,7 @@ const ReservationPage = ({companyInfo}) =>{
                             <StyledInput1 required={true} type="text" placeholder="CVV Code"></StyledInput1>
                         </InputContainer>
 
-                    </InputContainer2>
+                    </InputContainer2> */}
 
                     <ButtonContainer>
                         <StyledConfirmButton type="submit">Place Reservation</StyledConfirmButton>
@@ -96,7 +97,7 @@ const ReservationPage = ({companyInfo}) =>{
                 : confirmed === true &&
                 <>
                 <ConfirmedDiv>
-                    <StyledLabel>Thank you for your purchase!</StyledLabel>
+                    <StyledLabel>Thank you for placing a reservation!</StyledLabel>
                     <StyledCloseButton onClick={finalCloseModal}>close</StyledCloseButton>
                 </ConfirmedDiv>
                 </>
