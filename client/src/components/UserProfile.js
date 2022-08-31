@@ -28,9 +28,9 @@ const UserProfile = () =>{
     return(
         isAuthenticated && (
             <div>
-                <img src={user.picture} alt="the user profile"/>
+                {/* <img src={user.picture} alt="the user profile"/>
                 <h2>{user.nickname}</h2>
-                <p>{user.email}</p>
+                <p>{user.email}</p> */}
             </div>
         )
     )

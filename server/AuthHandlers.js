@@ -36,9 +36,9 @@ const  getValidation = async (req, res) =>{
         const checkIfUserCompanyExist = await db.collection("CompaniesInfo").find({"email": user}).toArray();
         console.log(checkIfUserCompanyExist);
         if(checkIfUserCompanyExist.length > 0){
-            res.status(400).json({status: 400, data: false})
+            res.status(400).json({status: 200, data: true,  user:checkIfUserCompanyExist[0]})
         } else{
-            res.status(200).json({status: 200, data: true})
+            res.status(200).json({status: 400, data: false})
         }
     }
     catch (err) {

@@ -4,9 +4,11 @@ import Header from "./Header";
 import TradesPage from "./pages/TradesPage";
 import ReservationPage from "./pages/ReservationPage";
 import CompanyProfilePage from "./pages/CompanyProfilePage";
-
+import { useAuth0 } from "@auth0/auth0-react";
+import CreatedCompanyProfile from "./pages/CreatedCompanyProfile";
 
 const App = () => {
+  const  {isAuthenticated} = useAuth0()
   return (
     <BrowserRouter>
         <Header/>
@@ -15,7 +17,7 @@ const App = () => {
           <Route exact path="/" element={<HomePage/>}/>
           <Route  path="/trades/:trade" element={<TradesPage/>}/>
           <Route path="/reservaton/:company" element={<ReservationPage/>}/>
-          <Route path="/profile" element={<CompanyProfilePage/>}/>
+          { isAuthenticated && <Route path="/profile" element={<CompanyProfilePage/>}/>}
         </Routes>
       </main>
     </BrowserRouter>

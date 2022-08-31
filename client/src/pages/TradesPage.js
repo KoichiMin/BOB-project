@@ -13,14 +13,14 @@ const TradesPage = () =>{
         fetch(`/get-description/${trade}`)
             .then((res) => res.json())
             .then((data) =>{
-                //console.log(data.data[0]);
+                console.log(data.data[0]);
                 setDescription(data.data[0].description);
             })
             .then(() =>{
                 fetch(`/get-companies/${trade}`)
                     .then((res) => res.json())
                     .then((data) =>{
-                        //console.log(data.data);
+                        console.log(data.data);
                         setCompanies(data.data);
                     })
 
@@ -30,8 +30,6 @@ const TradesPage = () =>{
 
     }, [])
     
-    // useEffect(() =>{
-    // }, [])
 
     return (
         <Wrapper>
