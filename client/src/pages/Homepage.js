@@ -36,8 +36,8 @@ const HomePage = () =>{
     return(
         <Wrapper>
             <StyledDiv style={{backgroundImage: `url(${image})`}}>
-                <div className="topsection">
                     <UserProfile/>
+                <div className="topsection">
                     <button onClick={() =>handleInterior()}>Interior</button>
                     <button onClick={() =>handleExterior()}>Exterior</button>
                 </div>

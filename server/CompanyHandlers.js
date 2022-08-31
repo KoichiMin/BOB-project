@@ -168,9 +168,38 @@ const getAllTrades = async (req, res) =>{
                 trades.push(interior[i].trade)
             }
         }
-
         res.status(200).json({ message: "success", data: trades})
+    }
+    catch (err) {
+        res.status(404).json({ status: 404, message: err.message })
+        client.close()
+    }
+}
 
+const postCompany = async (req, res) =>{
+        const userInput = req.body;
+        console.log(userInput);
+    try{
+        await client.connect();
+        const db = client.db("Companies");
+        await db.collection("CompaniesInfo").insertOne(userInput);
+        res.status(200).json({status: "success", message : "it was added to the database!" });
+        client.close();
+    }
+    catch (err) {
+        res.status(404).json({ status: 404, message: err.message })
+        client.close()
+    }
+}
+
+const postTradeDescription = async(req, res) =>{
+    try{
+        const description = req.body;
+        await client.connect();
+        const db = client.db("Companies");
+        await db.collection("TradeDescription").insertOne(description);
+        res.status(200).json({status: "success", message : "it was added to the database!" });
+        client.close();
     }
     catch (err) {
         res.status(404).json({ status: 404, message: err.message })
@@ -188,5 +217,7 @@ module.exports = {
     getTradeCompanies,
     getTradeDescription,
     getSpecificCompany,
-    getAllTrades
+    getAllTrades,
+    postCompany,
+    postTradeDescription
 };

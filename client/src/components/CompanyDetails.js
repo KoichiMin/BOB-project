@@ -5,15 +5,6 @@ import ReservationPage from "../pages/ReservationPage";
 const CompanyDetails = ({info}) =>{
     // const navigate = useNavigate();
 
-    // const handleSelect = (e) =>{
-    //     e.preventDefault();
-    //     navigate("/reservaton/${info.company}")
-    // }
-    {/* <button onClick={(e) =>{
-        e.preventDefault();
-    navigate(`/reservaton/${info.company}`) 
-    }}>select</button> */}
-
     return(
         <div>
             <div>{info.company}</div>

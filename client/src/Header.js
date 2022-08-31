@@ -10,7 +10,10 @@ const Header = () =>{
         <Wrapper>
             <div className="leftSide">
                 <Link to={"/"}>logo</Link>
+                {user &&
                 <Link to={"/profile"}>profile</Link>
+
+                }
             </div>
             {user ?
                 <LogoutButton/>
