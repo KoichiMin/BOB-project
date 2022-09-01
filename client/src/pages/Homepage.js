@@ -5,12 +5,14 @@ import styled from "styled-components";
 import InteriorButtonDisplay from "../components/InteriorButtonDisplay";
 import ExteriorButtonDisplay from "../components/ExteriorButtonDisplay";
 import UserProfile from "../components/UserProfile";
+import ChatBot from 'react-simple-chatbot'
+
 
 const HomePage = () =>{
     const [image, setImage] = useState(null)
     const [interiorTrue, setInteriorTrue] = useState(false)
     const [exteriorTrue, setExteriorTrue] = useState(false)
-
+    const [view, setView] = useState(true);
 
     useEffect(() =>{
         fetch("https://api.unsplash.com/photos/TRCJ-87Yoh0/?client_id=CuJKZwpX4x1nr-eFcRN7h2npm5sIkCeiv5mxhJNHgRU")
@@ -31,6 +33,35 @@ const HomePage = () =>{
         setInteriorTrue(false)
         setExteriorTrue(true)
     }
+    
+    const handleView = (e) =>{
+        e.preventDefault();
+        setView(prev => !prev)
+    }
+
+    const steps = [
+        { id: '0', message: 'Welcome to the BOB project!', trigger: '1',},
+
+        { id: "1", message: "Please enter your name!", trigger: "waiting1", },
+
+        { id: "waiting1", user: true, trigger: "Name", },
+    
+        { id: "Name", message: "Hi {previousValue}, Do you need immediate assistance?", trigger: "issues", },
+
+        { id: "issues",
+        options: 
+        [
+            { value: "Yes", label: "Yes", trigger: "Yes" },   
+            { value: "No", label: "No", trigger: "No" },        
+        ],
+        },
+        { id: "Yes", message:" We will contact our emergency team and send someone right away!", end: true},
+
+        { id: "No", message:"Please use the dropdown at the center of the page to place a reservation", trigger: "secondlast"},
+
+        { id: "secondlast", message:"You may also call our assistance line (514)239-7212 to get more info. Thank You. ", end: true },
+
+    ];
 
 
     return(
@@ -45,9 +76,16 @@ const HomePage = () =>{
                     {interiorTrue && <InteriorButtonDisplay activate={interiorTrue}/>}
                     {exteriorTrue && <ExteriorButtonDisplay activate={exteriorTrue}/>}
                 </MidDiv>
-                <BottomDiv>
-                    <button>Emergency!<br></br>Ask BOB for help</button>
-                </BottomDiv>
+
+                {  !view &&  
+                <div>
+                    <ChatBot  steps={steps}/>
+                    <button onClick={handleView}>Hide ChatBot</button>
+                </div>}
+
+                {view && <BottomDiv>
+                    <button onClick={handleView}>Emergency!<br></br>Ask BOB for help</button>
+                </BottomDiv>}
             </StyledDiv>
         </Wrapper>
     )
@@ -65,7 +103,7 @@ const StyledDiv = styled.div`
     background-size: cover;
     background-position: center;
     opacity: 0.8;
-    overflow: hidden;
+    /* overflow: hidden; */
 
     .topsection{
         display: flex;
