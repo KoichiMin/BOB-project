@@ -15,7 +15,8 @@ const {
     getSpecificCompany,
     getAllTrades,
     postCompany,
-    postTradeDescription
+    postTradeDescription,
+    getAllDesctiption
 } = require("./CompanyHandlers")
 
 const{
@@ -57,6 +58,7 @@ app.get("/get-Exterior/trades", getExtTrades)
 // get all companies within a certain trade
 app.get("/get-companies/:trade", getTradeCompanies)
 
+
 // get specific description of trade
 app.get("/get-description/:trade", getTradeDescription)
 
@@ -71,6 +73,9 @@ app.post("/add-company", postCompany)
 
 // post a trade description inside the description database if its a new trade
 app.post("/add-trade-description", postTradeDescription)
+
+// get all the trade descriptions 
+app.get("/get-all-description", getAllDesctiption)
 
   //*********************************************************
   // Endpoints for Auth0

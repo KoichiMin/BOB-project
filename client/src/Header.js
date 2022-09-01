@@ -12,8 +12,8 @@ const Header = () =>{
                 <Link to={"/"}>logo</Link>
                 {user &&
                 <Link to={"/profile"}>profile</Link>
-
                 }
+                <Link to={"/trade/description"}>trades</Link>
             </div>
             {user ?
                 <LogoutButton/>

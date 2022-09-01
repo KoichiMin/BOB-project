@@ -20,7 +20,7 @@ const CompanyProfilePage = () =>{
     const [validate, setValidate] = useState(null);
     const [load, setLoad] = useState(false);
     const [userInfo, setUserInfo] = useState(null)
-
+    const [tradeName, setTradeName] = useState(null)
     useEffect(() =>{
         fetch(`/validate-info/${user.email}`)
             .then((res) => res.json())
@@ -29,6 +29,14 @@ const CompanyProfilePage = () =>{
                 setValidate(data.data)
                 setLoad(true)
                 setUserInfo(data.user)
+            })
+            .then(() =>{
+                fetch("/get-all-trades")
+                    .then((res) => res.json())
+                    .then((data) =>{
+                        setTradeName(data.data)                
+                    })
+
             })
             
     }, [])
@@ -86,12 +94,11 @@ const CompanyProfilePage = () =>{
                 <label for="trade">Choose a trade:</label>
                 <select  required onChange = {handleChange}>
                     <option value="">Choose one</option>
-                    <option value="plumbing">plumbing</option>
-                    <option value="electrician">electrician</option>
-                    <option value="handyman">handyman</option>
-                    <option value="landscaping">landscaping</option>
-                    <option value="masonry">masonry</option>
-                    <option value="roofing">roofing</option>
+                    {tradeName && tradeName.map((element) =>{
+                        return(
+                            <option value={element}>{element}</option>
+                        )
+                    })}
                     <option value="other">other</option>
                 </select>
             

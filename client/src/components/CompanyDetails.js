@@ -1,9 +1,8 @@
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import ReservationPage from "../pages/ReservationPage";
 
 
 const CompanyDetails = ({info}) =>{
-    // const navigate = useNavigate();
 
     return(
         <div>

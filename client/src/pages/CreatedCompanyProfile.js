@@ -1,5 +1,4 @@
 
-import { useEffect } from "react";
 
 
 const CreatedCompanyProfile = ({info, user}) =>{

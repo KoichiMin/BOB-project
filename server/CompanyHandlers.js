@@ -207,6 +207,20 @@ const postTradeDescription = async(req, res) =>{
     }
 }
 
+const getAllDesctiption = async(req, res) =>{
+    try{
+        await client.connect();
+        const db = client.db("Companies");
+        const result = await db.collection("TradeDescription").find().toArray();
+        res.status(200).json({status: "success", data: result,  message : "it was added to the database!" });
+        client.close();
+    }
+    catch (err) {
+        res.status(404).json({ status: 404, message: err.message })
+        client.close()
+    }
+}
+
 
 module.exports = {
     getAllCompanies,
@@ -219,5 +233,6 @@ module.exports = {
     getSpecificCompany,
     getAllTrades,
     postCompany,
-    postTradeDescription
+    postTradeDescription,
+    getAllDesctiption
 };
