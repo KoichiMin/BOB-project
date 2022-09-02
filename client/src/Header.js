@@ -24,13 +24,14 @@ const Header = () =>{
 }
 
 const Wrapper = styled.div`
-    background-color: lightblue;
+    background-color: #D4DCFF;
     display: flex;
     justify-content: space-around;
 
     .leftSide{
         display: flex;
         gap: 20px;
+        text-decoration: none;
     }
 `
 

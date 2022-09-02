@@ -78,12 +78,13 @@ const HomePage = () =>{
                 </MidDiv>
 
                 {  !view &&  
-                <div>
-                    <ChatBot  steps={steps}/>
+                <ChatbotDiv>
+                    <ChatBot className="chatbot" steps={steps}/>
                     <button onClick={handleView}>Hide ChatBot</button>
-                </div>}
+                </ChatbotDiv>}
 
-                {view && <BottomDiv>
+                {view && 
+                <BottomDiv>
                     <button onClick={handleView}>Emergency!<br></br>Ask BOB for help</button>
                 </BottomDiv>}
             </StyledDiv>
@@ -103,6 +104,7 @@ const StyledDiv = styled.div`
     background-size: cover;
     background-position: center;
     opacity: 0.8;
+    position: relative;
     /* overflow: hidden; */
 
     .topsection{
@@ -126,6 +128,15 @@ const BottomDiv = styled.div`
     display: flex;
     justify-content: flex-end;
     margin-right: 5vw;
+
+`
+const ChatbotDiv = styled.div`
+position: absolute;
+bottom: 0;
+
+.chatbot{
+    /* background: red; */
+}
 
 `
 
