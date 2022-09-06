@@ -45,7 +45,7 @@ const ReservationPage = ({companyInfo}) =>{
     return(
         
         <>
-            <button onClick={openModal}>select</button>
+            <StyledButton onClick={openModal} >select</StyledButton>
             <Modal 
             isOpen={modalIsOpen}
             onRequestClose={closeModal}
@@ -57,7 +57,7 @@ const ReservationPage = ({companyInfo}) =>{
             <Wrapper>
                 <StyledTitle>Reservation</StyledTitle>
                     <InputContainer>
-                    <h1>{companyInfo.company}</h1>
+                    <h1 className="company-title">{companyInfo.company}</h1>
                     <h1>{companyInfo.description}</h1>
                     <h1>Price per Hour: {companyInfo.price}</h1>
                     </InputContainer>
@@ -73,19 +73,6 @@ const ReservationPage = ({companyInfo}) =>{
                         <StyledInput required={true} type="text" placeholder="Card Number"></StyledInput>
                     </InputContainer>
 
-                    {/* <InputContainer2>
-
-                        <InputContainer>
-                            <StyledLabel>Expiry Date</StyledLabel>
-                            <StyledInput1 required={true} type="text" placeholder="Expiry Date"></StyledInput1>
-                        </InputContainer>
-
-                        <InputContainer>
-                            <StyledLabel>CVV Code</StyledLabel>
-                            <StyledInput1 required={true} type="text" placeholder="CVV Code"></StyledInput1>
-                        </InputContainer>
-
-                    </InputContainer2> */}
 
                     <ButtonContainer>
                         <StyledConfirmButton type="submit">Place Reservation</StyledConfirmButton>
@@ -107,20 +94,72 @@ const ReservationPage = ({companyInfo}) =>{
     )
 }
 
+const StyledButton = styled.button`
+
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: 'Playfair Display', serif;
+    height: 3vh;
+    width: 7vw;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+
+
+:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+}
+
+:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+    }
+`
+
 const StyledTitle = styled.h1`
-    color:green;
+    color:#CBC4A8;
     margin-top:2vh;
     margin-bottom: 2vh;
     font-size: 2vw;
-`
+    font-family: 'Playfair Display', serif;
+
+    `
 const Wrapper = styled.div`
     width:30vw;
     height: 50vh;
+    font-family: 'Playfair Display', serif;
+    .company-title{
+        font-size: 25px;
+        margin-bottom: 2vh;
+    }
 `
-const Container = styled.form`
-    display: flex;
-    flex-direction: column;
-`
+
 const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -140,20 +179,6 @@ const StyledInput = styled.input`
     padding-bottom:0.2vh;
     width: 25.3vw;
 `
-const InputContainer2 = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin-bottom: 1vh;
-`
-
-const StyledInput1 = styled.input`
-    color:gray;
-    width: 11.5vw;
-    border:solid 1px;
-    padding-top:0.2vh;
-    padding-bottom:0.2vh;
-`
 
 const ButtonContainer = styled.div`
     display: flex;
@@ -162,16 +187,20 @@ const ButtonContainer = styled.div`
     padding-top: 3vh;
 `
 const StyledConfirmButton = styled.button`
-    background-color: lightblue;
+    background-color: #CBC4A8;
     border-width: 0;
     border-radius: 2vw;
     margin-right: 2vw;
     padding:1vh 2vw;
     color:white;
     font-weight: bold;
-    &:hover{
-        cursor: pointer;
-    }
+    
+    &:hover,
+    &:focus,
+    &:active {
+        box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+        transform: translateY(-0.25em);
+        }
 `
 const StyledCancelButton = styled.button`
     background-color: lightgray;
@@ -206,24 +235,6 @@ const ConfirmedDiv = styled.div`
 
     .closeButton{
         background-color: #d32f2f;
-    }
-`
-
-const StyledButton = styled.button`
-width: 6vw;
-height: 3vh;
-font-size: 15px;
-border:none;
-color: #F9F7F7;
-border-radius: 5px;
-font-weight: 2px;
-background-color: #3F72AF;
-&:hover {
-    opacity: 0.7;
-}
-
-&:active {
-    transform: translateY(2px);
     }
 `
 

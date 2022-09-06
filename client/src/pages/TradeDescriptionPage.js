@@ -27,23 +27,28 @@ const TradeDescriptionPage = () =>{
     }, [])
     return (
         <Wrapper>
-            <div className="image" style={{backgroundImage: `url(${image})`}}><span className="title">Trade Description</span></div>
-            {/* <div>trade Description</div> */}
-            {
-                tradesInfo ? 
-                tradesInfo.map((element) =>{
-                    return(
-                        <StyledDiv>
-                            <Link className="link" to={`/trades/${element.trade}`}>
-                            <div className="trade-title">{element.trade}</div>
-                            <div>{element.description}</div>
-                            </Link>
-                        </StyledDiv>
-                    )
-                })
-                :
-                <CircularProgress/>
-            }
+            <div className="image" style={{backgroundImage: `url(${image})`}}></div>
+            {/* <div className="title">Trade Description</div> */}
+            <div className="except-image">
+                <div className="title">Trade Description</div>
+                <div className="MidSection">
+                {
+                    tradesInfo ? 
+                    tradesInfo.map((element) =>{
+                        return(
+                            <StyledDiv>
+                                <Link className="link" to={`/trades/${element.trade}`}>
+                                <div className="trade-title">{element.trade}</div>
+                                <div>{element.description}</div>
+                                </Link>
+                            </StyledDiv>
+                        )
+                    })
+                    :
+                    <CircularProgress/>
+                }
+                </div>
+            </div>    
         </Wrapper>
     )
 }
@@ -59,13 +64,6 @@ const Wrapper = styled.div`
     background-color: #F4FDD9;
     height: auto;
 
-    .title{
-        font-size: 40px;
-        padding-left: 43vw;
-        margin-top: 20vh;
-        display: flex;
-        align-items: flex-end;
-    }
 
     .image{
         height: 30vh;
@@ -74,10 +72,32 @@ const Wrapper = styled.div`
         background-size: cover;
         background-position: 25% 75%;
     }
+
+    .except-image{
+        display: flex;
+        flex-direction: column;
+        
+        align-items: center;
+    }
+
+    .MidSection{
+        display: flex;
+        width: 90vw;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .title{
+        font-size: 40px;
+        margin-bottom: 5vh;
+    }
 `
 
 const StyledDiv = styled.div`
     width: 40vw;
+    height: 25vh;
     /* border: 1px solid black; */
     background-color: #EDD4B2;
     display: flex;
@@ -88,7 +108,7 @@ const StyledDiv = styled.div`
     border-radius: 20px;
 
     :hover{
-        background-color: #ABC798;
+        background-color: #F1DEDC;
     }
 
     :active{
@@ -99,9 +119,11 @@ const StyledDiv = styled.div`
         text-decoration: none;
         color: black;
         text-align: center;
+        font-size: 18px;
     }
     .trade-title{
-        font-size: 20px;
+        font-size: 30px;
+        padding-bottom: 7px;
     }
 `
 
