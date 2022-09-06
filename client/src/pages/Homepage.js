@@ -5,8 +5,9 @@ import styled from "styled-components";
 import InteriorButtonDisplay from "../components/InteriorButtonDisplay";
 import ExteriorButtonDisplay from "../components/ExteriorButtonDisplay";
 import UserProfile from "../components/UserProfile";
-import ChatBot from 'react-simple-chatbot'
+// import ChatBot from 'react-simple-chatbot'
 import Fade from 'react-reveal/Fade';
+import ChatBotComponent from "../components/ChatbotComponent";
 
 const HomePage = () =>{
     const [image, setImage] = useState(null)
@@ -39,30 +40,6 @@ const HomePage = () =>{
         setView(prev => !prev)
     }
 
-    const steps = [
-        { id: '0', message: 'Welcome to the BOB project!', trigger: '1',},
-
-        { id: "1", message: "Please enter your name!", trigger: "waiting1", },
-
-        { id: "waiting1", user: true, trigger: "Name", },
-    
-        { id: "Name", message: "Hi {previousValue}, Do you need immediate assistance?", trigger: "issues", },
-
-        { id: "issues",
-        options: 
-        [
-            { value: "Yes", label: "Yes", trigger: "Yes" },   
-            { value: "No", label: "No", trigger: "No" },        
-        ],
-        },
-        { id: "Yes", message:" We will contact our emergency team and send someone right away!", end: true},
-
-        { id: "No", message:"Please use the dropdown at the center of the page to place a reservation", trigger: "secondlast"},
-
-        { id: "secondlast", message:"You may also call our assistance line (514)239-7212 to get more info. Thank You. ", end: true },
-
-    ];
-
 
     return(
         <Wrapper id="wrapper">
@@ -73,7 +50,7 @@ const HomePage = () =>{
                     </div>
                 <div className="content">
 
-                    <div className="words">Click on the type of work environment </div>
+                    <div className="words">Where would you like to renovate? </div>
                     <div className="topsection">
                         <button className="center-button" onClick={() =>handleInterior()}>Interior</button>
                         <button className="center-button" onClick={() =>handleExterior()}>Exterior</button>
@@ -84,11 +61,9 @@ const HomePage = () =>{
                     </MidDiv>
                 </div>    
 
-                {  !view &&  
-                <ChatbotDiv>
-                    <ChatBot className="chatbot" steps={steps}/>
-                    <button onClick={handleView}>Hide ChatBot</button>
-                </ChatbotDiv>}
+                {  !view &&      
+                <ChatBotComponent  setView={setView} handleView={handleView}/>
+                }
 
                 {view && 
                 <BottomDiv>
@@ -107,8 +82,6 @@ const Wrapper = styled.div`
         font-family: 'Playfair Display', serif;
         color: black;
         font-size: 60px;
-        /* margin-right: 3vw;
-        margin-bottom: 20vh; */
         font-weight: bold;
         background-color: #E1DABD;
         padding: 14px 0 34px;
@@ -123,12 +96,9 @@ const Wrapper = styled.div`
 
 `
 
-
 const StyledDiv = styled.div`
     display: flex;
-    /* align-items: center; */
-    /* justify-content: center; */
-    /* border: 1px solid black; */
+
     min-height: calc(100vh - 60px);
     flex-direction: column;
     height: 100%;
@@ -153,14 +123,14 @@ const StyledDiv = styled.div`
         justify-content: center;
         align-items: center;
         font-size: 30px;
-        margin-top: 15vh;
+        margin-top: 16vh;
         height: 100%;
     }
     .topsection{
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        height: 12vh;
+        height: 8vh;
         gap: 10px;
         .center-button{
             border: none;
@@ -207,19 +177,7 @@ const BottomDiv = styled.div`
             transform: translateY(4px);
         }
 `
-const ChatbotDiv = styled.div`
-position: absolute;
-bottom: 0;
 
-.chatbot{
-    div{
-        /* background-color: #E1DABD; */
-
-
-    }
-}
-
-`
 
 
 export default HomePage;

@@ -39,6 +39,7 @@ const Wrapper = styled.div`
     gap: 12px;
 
     div{
+        background-color:#E1DABD;
         align-self: center;
         display: flex;
         justify-content: center;
@@ -46,7 +47,15 @@ const Wrapper = styled.div`
         height: 100px;
         border-radius: 50%;
         width: 100px;
-        border: 1px solid black;
+        /* border: 1px solid black; */
+    }
+    
+    a{
+        text-decoration: none;
+        color: black;
+        font-weight: bold;
+        font-size: 18px;
+        font-family: 'Playfair Display', serif;
     }
 
 `
