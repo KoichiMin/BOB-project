@@ -5,6 +5,7 @@ import { CircularProgress } from "@mui/material";
 import CreatedCompanyProfile from "./CreatedCompanyProfile";
 import styled from "styled-components";
 
+// this page is accessible once you click on the trade button on the Header. If you have an account which was validated by checking the database, it will call the CreatedCompanyProfile or else you can create a company profile 
 const CompanyProfilePage = () =>{
     const navigate = useNavigate();
 
@@ -28,7 +29,6 @@ const CompanyProfilePage = () =>{
         fetch(`/validate-info/${user.email}`)
             .then((res) => res.json())
             .then((data) =>{
-                //console.log(data.data)
                 setValidate(data.data)
                 setLoad(true)
                 setUserInfo(data.user)

@@ -1,5 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import styled from "styled-components";
+
+// this is the login button that's being called from the Header. Once you click it, its going to activate the loginWithRedirect so show the login page 
 const LoginButton = () =>{
     const {loginWithRedirect} = useAuth0();
 

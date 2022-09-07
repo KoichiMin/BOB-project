@@ -1,14 +1,13 @@
-// import SearchBar from "../components/SearchBar";
-// import { User } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import InteriorButtonDisplay from "../components/InteriorButtonDisplay";
 import ExteriorButtonDisplay from "../components/ExteriorButtonDisplay";
 import UserProfile from "../components/UserProfile";
-// import ChatBot from 'react-simple-chatbot'
 import Fade from 'react-reveal/Fade';
 import ChatBotComponent from "../components/ChatbotComponent";
 
+
+// the intro page to the website. 
 const HomePage = () =>{
     const [image, setImage] = useState(null)
     const [interiorTrue, setInteriorTrue] = useState(false)
@@ -16,25 +15,27 @@ const HomePage = () =>{
     const [view, setView] = useState(true);
 
     useEffect(() =>{
+        // this image is fetched from unsplash and set as a background image 
         fetch("https://api.unsplash.com/photos/TRCJ-87Yoh0/?client_id=CuJKZwpX4x1nr-eFcRN7h2npm5sIkCeiv5mxhJNHgRU")
             .then((res) => res.json())
             .then((data) =>{
-                // console.log(data.urls.full)
                 setImage(data.urls.full)
 
             })
     }, [])
 
+    // once called it will activate the InteriorButtonDisplay so we can display the interior trades
     const handleInterior = () =>{
         setExteriorTrue(false)
         setInteriorTrue(true)
     }
-    
+    // once called it will activate the ExteriorButtonDisplay so we can display the exterior trades
     const handleExterior = () =>{
         setInteriorTrue(false)
         setExteriorTrue(true)
     }
     
+    // toggle button to display or hide the chatbot component  
     const handleView = (e) =>{
         e.preventDefault();
         setView(prev => !prev)
@@ -43,7 +44,7 @@ const HomePage = () =>{
 
     return(
         <Wrapper id="wrapper">
-            <StyledDiv style={{backgroundImage: `url(${image})`}}>
+            <StyledDiv image={image}>
                     <UserProfile/>
                     <div className="quote">
                     <Fade left >Love where you live…renovate</Fade>
@@ -98,7 +99,7 @@ const Wrapper = styled.div`
 
 const StyledDiv = styled.div`
     display: flex;
-
+    background-image: url(${(props) => props.image});
     min-height: calc(100vh - 60px);
     flex-direction: column;
     height: 100%;

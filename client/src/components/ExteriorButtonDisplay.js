@@ -4,8 +4,10 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Fade from 'react-reveal/Fade';
 
+//  being called in the Homepage so that when its clicked it will display all the exterior trades 
 const ExteriorButtonDisplay = ({activate}) =>{
     const [trades, setTrades] = useState([])
+    // this fetch is to get all the trades that have an exterior category in their CompanyInfo
     useEffect(() =>{
         fetch("/get-Exterior/trades")
             .then((res) => res.json())
