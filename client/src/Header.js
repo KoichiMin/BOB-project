@@ -4,6 +4,8 @@ import LoginButton from "./components/LoginButton";
 import LogoutButton from "./components/LogoutButton";
 import { useAuth0 } from "@auth0/auth0-react";
 
+
+// the Header for the whole website. Offers multiple links to be clicked to redirect the user to different pages 
 const Header = () =>{
     const { user } = useAuth0();
 

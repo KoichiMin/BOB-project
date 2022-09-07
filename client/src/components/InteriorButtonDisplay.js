@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import {CircularProgress} from "@mui/material"
 import styled from "styled-components";
 import Fade from 'react-reveal/Fade';
+
+//  being called in the Homepage so that when its clicked it will display all the interior trades 
 const InteriorButtonDisplay = ({activate}) =>{
     const [trades, setTrades] = useState([])
     useEffect(() =>{
+            // this fetch is to get all the trades that have an interior category in their CompanyInfo
         fetch("/get-Interior/trades")
             .then((res) => res.json())
             .then((data) =>{

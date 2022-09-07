@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 
-
+// called on the Homepage. I didn't want to show anything but I wanted it to be called so it can post the info inside the database 
 const UserProfile = () =>{
     const { user, isAuthenticated, isLoading} = useAuth0();
         useEffect(() =>{

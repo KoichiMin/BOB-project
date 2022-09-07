@@ -3,32 +3,28 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-// this page is to show all the trades with their description
+// Can be called if the user clicks on the trades button on the Header. This page is to show all the trades with their description
 const TradeDescriptionPage = () =>{
     const [tradesInfo, setTradeInfo] = useState(null)
     const [image, setImage] = useState(null);
     useEffect(() =>{
+        // fetching an image with the unsplash api
         fetch("https://api.unsplash.com/photos/VLPUm5wP5Z0?client_id=CuJKZwpX4x1nr-eFcRN7h2npm5sIkCeiv5mxhJNHgRU")
             .then((res) => res.json())
             .then((data) =>{
-                // console.log(data.urls.full)
                 setImage(data.urls.full)
-
             }).then(() =>{
                 fetch("/get-all-description")
                     .then((res) => res.json())
                     .then((data) =>{
-                        setTradeInfo(data.data)
-                        
+                        setTradeInfo(data.data)       
                     })
-
-
             })
     }, [])
+
     return (
         <Wrapper>
             <div className="image" style={{backgroundImage: `url(${image})`}}></div>
-            {/* <div className="title">Trade Description</div> */}
             <div className="except-image">
                 <div className="title">Trade Description</div>
                 <div className="MidSection">

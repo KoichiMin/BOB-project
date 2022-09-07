@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Divider } from "@mui/material";
 
 const CompanyDetails = ({info}) =>{
-
+    // this component is getting mapped by the tradesPage component. The goal is to set up all the info on the individual company 
     return(
         <Wrapper>
             <div className="company">{info.company}</div>

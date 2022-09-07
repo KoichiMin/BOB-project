@@ -176,6 +176,7 @@ const getAllTrades = async (req, res) =>{
     }
 }
 
+// post a company info inside the database 
 const postCompany = async (req, res) =>{
         const userInput = req.body;
         console.log(userInput);
@@ -192,6 +193,7 @@ const postCompany = async (req, res) =>{
     }
 }
 
+// post a description of a trade to the database 
 const postTradeDescription = async(req, res) =>{
     try{
         const description = req.body;
@@ -207,6 +209,7 @@ const postTradeDescription = async(req, res) =>{
     }
 }
 
+// get all the descriptions of each trade from the database 
 const getAllDesctiption = async(req, res) =>{
     try{
         await client.connect();

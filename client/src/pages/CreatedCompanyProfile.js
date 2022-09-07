@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import ImageForTradesPage from "../components/ImageForTradesPage";
 
+// once the user has created an account. This will automatically be called and show the user's account profile
 const CreatedCompanyProfile = ({info, user}) =>{
-        
-    
+
     return(
         <Wrapper>
             <div>

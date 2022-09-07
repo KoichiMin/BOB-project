@@ -27,6 +27,7 @@ const  sendUserInfo = async (req, res) =>{
     }
 }
 
+// the handler once called, will be able to go through the database and verify if the user's created a company profile yet 
 const  getValidation = async (req, res) =>{
     const { user } = req.params;
     //console.log(user)

@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import {  useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import Modal from "react-modal"
+import Modal from "react-modal";
+
+// called inside the CompanyDetails so the modal can be displayed. Once shown, the user can now place a reservation
 const ReservationPage = ({companyInfo}) =>{
 
-
+    // this is how the control the display of the modal
     const customStyles = {
         content: {
             top: '50%',
@@ -20,23 +22,25 @@ const ReservationPage = ({companyInfo}) =>{
     const [modalIsOpen, setIsOpen] = useState(false)
     const [confirmed, setConfirmed] = useState(false)
 
+    // once clicked it will display the modal
     const openModal = () => {
         setIsOpen(true)
     }
 
+    // if clicked the modal will be closed 
     const closeModal = () => {
         setIsOpen(false);
         setConfirmed(false);
         
     }
-
+    // once the user places a reservation, a new modal will show that the reservation was accomplished. This button will helped the user close the modal and get back to the Homepage
     const finalCloseModal = () => {
         setIsOpen(false);
         setConfirmed(false);
         navigate("/");
     }
 
-
+    // this will activated once the form is being submitted. Just changing the useState setConfirmed
     const handleSubmit = (e) => {
         e.preventDefault();
         setConfirmed(true)

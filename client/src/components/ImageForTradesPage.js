@@ -2,8 +2,10 @@ import { useState } from "react"
 import { useEffect } from "react"
 import styled from "styled-components";
 
+// called in multiple places like createdCompanyProfile, TradesPage. Did almost all the fetching for the image from unsplash 
 const ImageForTradesPage = ({trade}) =>{
     const [image, setImage] = useState(null);
+    // different trades will call different images. If the trade isnt there then itll just show a specific image 
     useEffect(() =>{
         if(trade === "plumbing"){
             fetch('https://api.unsplash.com/photos/p5i7uyPuHto/?client_id=CuJKZwpX4x1nr-eFcRN7h2npm5sIkCeiv5mxhJNHgRU')

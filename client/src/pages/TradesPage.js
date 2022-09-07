@@ -5,7 +5,7 @@ import styled from "styled-components";
 import CompanyDetails from "../components/CompanyDetails";
 import ImageForTradesPage from "../components/ImageForTradesPage";
 
-
+// Called once the user clicked on a trade inside the HomePage. The page will display all the companies connected to the trade and also show a description of the trade.
 const TradesPage = () =>{
     const {trade} = useParams()
     const [companies, setCompanies] = useState(null);
@@ -13,13 +13,14 @@ const TradesPage = () =>{
     const [changeHeight, setChangeHeight] = useState(false)
 
     useEffect(() =>{
+        // fetching the description of the trade 
         fetch(`/get-description/${trade}`)
             .then((res) => res.json())
             .then((data) =>{
-                // console.log(data.data[0]);
                 setDescription(data.data[0].description);
             })
             .then(() =>{
+                // fetching all the companies connected to the trade 
                 fetch(`/get-companies/${trade}`)
                     .then((res) => res.json())
                     .then((data) =>{
@@ -75,7 +76,6 @@ const Wrapper = styled.div`
     } */
 
     .left-section{
-        /* box-sizing: border-box; */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -100,7 +100,6 @@ const MidSection = styled.div`
 
 const StyledDiv = styled.div`
     width: 40vw;
-    /* border: 1px solid black; */
     margin: 10px;
     background-color: #EDD4B2;
     display: flex;
