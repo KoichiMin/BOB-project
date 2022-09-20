@@ -1,6 +1,5 @@
 # BOB-project
 
----
 
 ### BOB-project is a service provider, allowing users to book an appointment with any trade in the construction industry.
 ---
