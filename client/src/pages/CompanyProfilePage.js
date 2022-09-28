@@ -30,7 +30,7 @@ const CompanyProfilePage = () =>{
             .then((res) => res.json())
             .then((data) =>{
                 setValidate(data.data)
-                setLoad(true)
+                // setLoad(true)
                 setUserInfo(data.user)
             })
             .then(() =>{
@@ -47,6 +47,7 @@ const CompanyProfilePage = () =>{
                             .then((data) =>{
                                 console.log(data.urls.full)
                                 setImage(data.urls.full)
+                                setLoad(true)
                             })
                     })
 
@@ -68,7 +69,8 @@ const CompanyProfilePage = () =>{
                 description : description,
                 price : price,
                 category : category.trim(),
-                email: user.email
+                email: user.email,
+                user: "employer"
             })
         }).then((res) => res.json()
         ).then((data) =>{
@@ -139,13 +141,14 @@ const CompanyProfilePage = () =>{
             {  trade === "other" &&  <div className="">
                     {/* <label>trade :</label> */}
                     <input required  type="text" placeholder="trade" value={newTrade} onChange = {(e) => setNewTrade(e.target.value)}/>
-                    <textarea  rows="3" cols="40" value={tradeDescription} onChange = {(e) => setTradeDescription(e.target.value)} placeholder="Please write a short description of this trade"></textarea>
+                    <textarea  rows="2" cols="40" value={tradeDescription} onChange = {(e) => setTradeDescription(e.target.value)} placeholder="Please write a short description of this trade"></textarea>
                 </div>}
                 
                 </div>
                 <div className="">
+                    <br/>
                     <label>description : </label>
-                    <textarea rows="3" cols="40" placeholder="Please write a short description of your company" required type="text"  value={description} onChange = {(e) =>setDescription(e.target.value)}/>
+                    <textarea rows="2" cols="40" placeholder="Please write a short description of your company" required type="text"  value={description} onChange = {(e) =>setDescription(e.target.value)}/>
                 </div>
                 </div>
                 <button className="button">Add to List</button>
@@ -192,8 +195,8 @@ const StyledDiv = styled.div`
         border-radius: 15px;
         /* border: black 1px solid; */
         background-color: white;
-        height: 45vh;
-        width: 45vh;
+        height: 470px;
+        width: 430px;
         font-size: 20px;
         display: flex;
         flex-direction: column;

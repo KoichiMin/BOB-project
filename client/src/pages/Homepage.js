@@ -135,8 +135,8 @@ const StyledDiv = styled.div`
         gap: 10px;
         .center-button{
             border: none;
-            height: 5vh;
-            width: 7vw;
+            height: 47px;
+            width: 110px;
             border-radius: 10px;
             font-size: 20px;
         }
@@ -164,8 +164,8 @@ const BottomDiv = styled.div`
     left: 30px;
     .bottom-button{
             border: none;
-            height: 8vh;
-            width: 12vw;
+            height: 80px;
+            width: 210px;
             border-radius: 200px;
             font-size: 20px;
         }

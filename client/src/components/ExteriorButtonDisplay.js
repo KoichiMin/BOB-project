@@ -55,7 +55,7 @@ const Wrapper = styled.div`
     a{
         text-decoration: none;
         color: black;
-        font-weight: bold;
+        /* font-weight: bold; */
         font-size: 18px;
         font-family: 'Playfair Display', serif;
     }

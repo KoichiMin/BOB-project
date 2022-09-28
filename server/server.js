@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 5000
+const port = 4000
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
@@ -16,7 +16,8 @@ const {
     getAllTrades,
     postCompany,
     postTradeDescription,
-    getAllDesctiption
+    getAllDesctiption,
+    postClient
 } = require("./CompanyHandlers")
 
 const{
@@ -89,7 +90,7 @@ app.get("/validate-info/:user", getValidation)
 // receive the login info from the frontend and send it to the database
 app.post("/send-info", sendUserInfo)
 
-
+app.post("add-client", postClient)
 
  // Catch all if nothing works
 // app.get('*', (req, res) => {

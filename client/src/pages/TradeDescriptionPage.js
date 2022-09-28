@@ -92,8 +92,8 @@ const Wrapper = styled.div`
 `
 
 const StyledDiv = styled.div`
-    width: 40vw;
-    height: 25vh;
+    width: 620px;
+    height: 220px;
     /* border: 1px solid black; */
     background-color: #EDD4B2;
     display: flex;
