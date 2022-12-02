@@ -1,4 +1,5 @@
 # BOB-project
+![Screen Shot 2022-12-02 at 10 11 17](https://user-images.githubusercontent.com/107074566/205324418-9ddf1e16-f595-45d3-8453-631ef5ab3441.png)
 
 
 ### BOB-project is a service provider, allowing users to book an appointment with any trade in the construction industry.
