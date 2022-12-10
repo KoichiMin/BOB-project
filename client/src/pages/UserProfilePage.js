@@ -2,20 +2,34 @@ import { useEffect, useState } from "react"
 import styled from "styled-components";
 import { useAuth0 } from "@auth0/auth0-react";
 import { CircularProgress } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import CreateUserProfile from "./CreateUserProfile";
 
 const UserProfilePage = () =>{
     const [image, setImage] = useState(null);
     const [username, setUsername] = useState(null);
     const [load, setLoad] = useState(false)
     const { user} = useAuth0();
-
+    const navigate = useNavigate();
+    const [validate, setValidate] = useState(null);
+    const [userInfo, setUserInfo] = useState(null);
+    
     useEffect(() =>{
-        fetch("https://api.unsplash.com/photos/IWfe63thJxk?client_id=CuJKZwpX4x1nr-eFcRN7h2npm5sIkCeiv5mxhJNHgRU")
-                .then((res) => res.json())
-                .then((data) =>{
-                    setImage(data.urls.full)
-                    setLoad(true)
-                })
+        fetch(`/validate-info/${user.email}`)
+            .then((res) => res.json())
+            .then((data) =>{
+                setValidate(data.data)
+                // setLoad(true)
+                setUserInfo(data.user)
+            })
+            .then(() =>{
+                fetch("https://api.unsplash.com/photos/IWfe63thJxk?client_id=CuJKZwpX4x1nr-eFcRN7h2npm5sIkCeiv5mxhJNHgRU")
+                        .then((res) => res.json())
+                        .then((data) =>{
+                            setImage(data.urls.full)
+                            setLoad(true)
+                        })
+                    })            
     }, [])
 
     const handleSubmit = (e) =>{
@@ -34,10 +48,16 @@ const UserProfilePage = () =>{
     .then((data) =>{
         console.log(data)
     })
+    navigate("/")
 }
 
     return(
         load ?
+        validate ?
+        <div>
+            <CreateUserProfile info={userInfo} User={user}/>
+        </div>
+        :
         <Wrapper style={{backgroundImage: `url(${image})`}}>
             <form className="form" onSubmit={handleSubmit}>
                 <p>Client</p>
@@ -51,9 +71,9 @@ const UserProfilePage = () =>{
             </form>
         </Wrapper>
         :
-        <Wrapper>
+        <Circular>
             <CircularProgress/>
-        </Wrapper>
+        </Circular>
     )
 }
 
@@ -143,5 +163,12 @@ const Wrapper = styled.div`
         }
     }
 `
+const Circular = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40vh;
+`
+
 
 export default UserProfilePage

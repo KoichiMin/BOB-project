@@ -35,11 +35,20 @@ const  getValidation = async (req, res) =>{
         await client.connect();
         const db = client.db("Companies");
         const checkIfUserCompanyExist = await db.collection("CompaniesInfo").find({"email": user}).toArray();
+        const checkIfUserClientExist = await db.collection("ClientInfo").find({"email": user}).toArray();
         console.log(checkIfUserCompanyExist);
+        console.log(checkIfUserClientExist);
         if(checkIfUserCompanyExist.length > 0){
             res.status(400).json({status: 200, data: true,  user:checkIfUserCompanyExist[0]})
-        } else{
-            res.status(200).json({status: 400, data: false})
+            return;
+        } 
+        if(checkIfUserClientExist.length > 0){
+            res.status(400).json({status: 200, data: true, user: checkIfUserClientExist[0]})
+            return;
+        }
+        if(checkIfUserClientExist.length === 0 || checkIfUserCompanyExist.length === 0){
+            res.status(404).json({status: 404, data: false})
+            return;
         }
     }
     catch (err) {

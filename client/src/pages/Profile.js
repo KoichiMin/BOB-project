@@ -14,34 +14,27 @@ const Profile = () =>{
     const [userChoice, setUserChoice] = useState(false);
     const [load, setLoad] = useState(false);
     const [userInfo, setUserInfo] = useState(null)
-    const [image, setImage] = useState(null);
+
     const { user} = useAuth0();
     // this useEffect is to look into the database and see if the user has created an email. If they didn't, data.data will be false. If it's true, then I'll use and if statement to see if it's a employer or client 
     useEffect(() =>{
         fetch(`/validate-info/${user.email}`)
         .then((res) => res.json())
         .then((data) =>{
-            setUserInfo(data.user)
+            // console.log(data.data)
             setLoad(true)
             setUserChoice(data.data)
-            console.log(data.data)
             if(data.data === true){
-                if(userInfo.user === 'employer'){
+                setUserInfo(data.user.user)
+                if(data.user.user === 'employer'){
                     setEmployer(true)
+                    console.log(Employer)
                 } else{
                     setUser(true)
+                    // console.log(User)
                 }
 
             }
-        })
-        .then(() =>{
-            // fetching the background image 
-            fetch("https://api.unsplash.com/photos/x-ghf9LjrVg?client_id=CuJKZwpX4x1nr-eFcRN7h2npm5sIkCeiv5mxhJNHgRU")
-                .then((res) => res.json())
-                .then((data) =>{
-                    console.log(data.urls.full)
-                    setImage(data.urls.full)
-                })
         })
     }, [])
     return(
@@ -68,9 +61,9 @@ const Profile = () =>{
                 }
             </Wrapper>
         :
-        <Wrapper>
+        <Circular>
             <CircularProgress/>
-        </Wrapper>
+        </Circular>
     )
 }
 
@@ -83,7 +76,6 @@ const Wrapper = styled.div`
     height: 93.5vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     
     
@@ -91,6 +83,9 @@ const Wrapper = styled.div`
     const StyledDiv = styled.div`
         display: flex;
         gap: 30px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40vh;
         
         .link{
             background-color: #EDD4B2;
@@ -111,10 +106,14 @@ const Wrapper = styled.div`
                 transform: translateY(4px);
             }
         }
-
-
-
     `
+
+const Circular = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40vh;
+`
 
 export default Profile
 

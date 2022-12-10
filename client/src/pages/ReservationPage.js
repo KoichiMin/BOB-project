@@ -3,9 +3,11 @@ import {  useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "react-modal";
+import { useAuth0 } from "@auth0/auth0-react";
 
 // called inside the CompanyDetails so the modal can be displayed. Once shown, the user can now place a reservation
 const ReservationPage = ({companyInfo}) =>{
+    const { user} = useAuth0();
 
     // this is how the control the display of the modal
     const customStyles = {
@@ -44,6 +46,22 @@ const ReservationPage = ({companyInfo}) =>{
     const handleSubmit = (e) => {
         e.preventDefault();
         setConfirmed(true)
+        fetch("/add-reservation", {
+            method: 'POST',
+            headers:{
+                'Content-type':'application/json',
+            },
+            body: JSON.stringify({
+                company: companyInfo.company,
+                price: companyInfo.price,
+                description: companyInfo.description,
+                email: user.email
+            })
+        })  
+            .then((res) => res.json())
+            .then((data) =>{
+                console.log(data)
+            })
     
     }
     return(
@@ -156,7 +174,7 @@ const StyledTitle = styled.h1`
     `
 const Wrapper = styled.div`
     width:30vw;
-    height: 50vh;
+    height: 60vh;
     font-family: 'Playfair Display', serif;
     .company-title{
         font-size: 25px;

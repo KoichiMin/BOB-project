@@ -17,8 +17,15 @@ const {
     postCompany,
     postTradeDescription,
     getAllDesctiption,
-    postClient
+    
 } = require("./CompanyHandlers")
+
+const {
+  postClient,
+  postReservation,
+  getReservationsForClient,
+  deleteSpecificCompany
+} = require("./ClientHandlers")
 
 const{
     sendUserInfo,
@@ -34,10 +41,25 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 app.use(bodyParser.json());
 
+//*********************************************************
+// Endpoints for Client
+//*********************************************************
 
-  //*********************************************************
-  // Endpoints for COMPANIES
-  //*********************************************************
+// post a client account into the database
+app.post("/add-client", postClient)
+
+// add a reservation to a client account
+app.post("/add-reservation", postReservation)
+
+// get all the reservation for the client 
+app.get("/get-reservation/:clients", getReservationsForClient)
+
+// delete selected reservation
+app.delete('/delete-reservation/:company', deleteSpecificCompany)
+
+//*********************************************************
+// Endpoints for COMPANIES
+//*********************************************************
 
 //get all the companies
 app.get("/get-companies", getAllCompanies);
@@ -78,6 +100,8 @@ app.post("/add-trade-description", postTradeDescription)
 // get all the trade descriptions 
 app.get("/get-all-description", getAllDesctiption)
 
+
+
   //*********************************************************
   // Endpoints for Auth0
   //*********************************************************
@@ -90,7 +114,6 @@ app.get("/validate-info/:user", getValidation)
 // receive the login info from the frontend and send it to the database
 app.post("/send-info", sendUserInfo)
 
-app.post("add-client", postClient)
 
  // Catch all if nothing works
 // app.get('*', (req, res) => {

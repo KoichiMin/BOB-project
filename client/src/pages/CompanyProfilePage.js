@@ -67,7 +67,7 @@ const CompanyProfilePage = () =>{
                 trade : trade === "other" ? newTrade.trim() : trade.trim(), 
                 company : company,
                 description : description,
-                price : price,
+                price : price + "$",
                 category : category.trim(),
                 email: user.email,
                 user: "employer"
@@ -282,7 +282,7 @@ const Render = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20vh;
+    margin-top: 40vh;
 `
 
 export default CompanyProfilePage

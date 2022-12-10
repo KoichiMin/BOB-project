@@ -3,7 +3,7 @@ import ImageForTradesPage from "../components/ImageForTradesPage";
 
 // once the user has created an account. This will automatically be called and show the user's account profile
 const CreatedCompanyProfile = ({info, user}) =>{
-
+    
     return(
         <Wrapper>
             <div>
@@ -24,7 +24,7 @@ const CreatedCompanyProfile = ({info, user}) =>{
 const Wrapper = styled.div`
 background-color: #F4FDD9;
 font-family: 'Playfair Display', serif;
-
+overflow: hidden;
 .profile-image{
 
 }
@@ -32,6 +32,7 @@ font-family: 'Playfair Display', serif;
 
 const StyledDiv = styled.div`
     height: 63.5vh;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
