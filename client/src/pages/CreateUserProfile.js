@@ -42,6 +42,7 @@ const CreateUserProfile = ({info, User}) =>{
             })
             window.location.reload();
     }
+    // hello 
     return(
         <Wrapper>
             <div className="image" style={{backgroundImage: `url(${image})`}}></div>
