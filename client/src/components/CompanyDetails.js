@@ -16,14 +16,23 @@ const CompanyDetails = ({info}) =>{
             fetch(`/validate-info/${user.email}`)
                 .then((res) => res.json())
                 .then((data) =>{
-                    if(data.user.user === 'client'){
-                        setEnableButton(true);
+                    if(data.data === false){
                         setLoad(true)
-                    } else{
-                        setLoad(true)
+                        
+                    }
+                    else{
+                        if(data.user.user === 'client' && data.user.user !== undefined){
+                            setEnableButton(true);
+                            setLoad(true)
+                        } else{
+                            setLoad(true)
+                        }
+
                     }
                 })
-        } else{
+        } 
+        
+        else{
             setLoad(true);
 
         }
