@@ -5,7 +5,7 @@ import TradesPage from "./pages/TradesPage";
 import ReservationPage from "./pages/ReservationPage";
 import CompanyProfilePage from "./pages/CompanyProfilePage";
 import { useAuth0 } from "@auth0/auth0-react";
-import CreatedCompanyProfile from "./pages/CreatedCompanyProfile";
+
 import TradeDescriptionPage from "./pages/TradeDescriptionPage";
 import Profile from "./pages/Profile";
 import UserProfilePage from "./pages/UserProfilePage";

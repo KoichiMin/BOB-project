@@ -63,7 +63,7 @@ const HomePage = () =>{
                 </div>    
 
                 {  !view &&      
-                <ChatBotComponent  setView={setView} handleView={handleView}/>
+                <ChatBotComponent  handleView={handleView}/>
                 }
 
                 {view && 

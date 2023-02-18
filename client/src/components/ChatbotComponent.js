@@ -1,9 +1,9 @@
 import styled from "styled-components"
 import ChatBot from 'react-simple-chatbot'
-import { useState } from "react";
+// 
 
 const ChatBotComponent = ({setView, handleView}) =>{
-    // const [view, setView] = useState(true);
+    
 
     const steps = [
         { id: '0', message: 'Welcome to the BOB project!', trigger: '1',},
