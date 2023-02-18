@@ -1,5 +1,11 @@
 {
   "dependencies": {
     "mongodb": "^5.0.1"
-  }
+  },
+  "name": "BOB-project official ",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/KoichiMin/BOB-project.git",
+  "author": "“Koichi <koichidminami@gmail.com>",
+  "license": "MIT"
 }
