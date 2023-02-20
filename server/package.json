@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "yarn install && node server.js",
-    
+    "build": "yarn install",
+    "start": "yarn install && node server.js",
     "dev": "nodemon server.js"
     
   },
@@ -28,6 +28,6 @@
     "nodemon": "^2.0.20"
   },
   "engines": {
-    "node": "16.x"
+    "node": "19.6.0"
   }
 }
