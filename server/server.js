@@ -3,6 +3,10 @@ const app = express()
 const port = process.env.PORT || 4000
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
+const cors = require("cors")
+app.use(cors({
+  origin: "https://bob-project-website.herokuapp.com"
+}));
 
 const {
     getAllCompanies,
@@ -40,6 +44,7 @@ app.use(express.urlencoded({ extended: false }))
 // used to be able to read a json object from the frontend
 app.use(express.json());
 app.use(bodyParser.json());
+
 
 //*********************************************************
 // Endpoints for Client
