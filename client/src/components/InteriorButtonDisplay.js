@@ -9,7 +9,7 @@ const InteriorButtonDisplay = ({activate}) =>{
     const [trades, setTrades] = useState([])
     useEffect(() =>{
             // this fetch is to get all the trades that have an interior category in their CompanyInfo
-        fetch("/get-Interior/trades")
+        fetch("https://bob-project-website.herokuapp.com/get-Interior/trades/")
             .then((res) => res.json())
             .then((data) =>{
                 setTrades(data.data);

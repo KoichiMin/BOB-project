@@ -1,13 +1,14 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT 
+const port = process.env.PORT || 4000
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require("cors")
 app.use(cors({
-  origin: "https://bob-project-website.herokuapp.com"
+  origin: "*"
 }));
 
+console.log(process.env.PORT)
 const {
     getAllCompanies,
     getAllExterior,
