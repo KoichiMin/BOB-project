@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import GlobalStyles from "./GlobalStyles"
 import App from './App';
 import { Auth0Provider} from "@auth0/auth0-react"
-
+// console.log(process.env)
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // this Provider will enable the Auth0 login. 

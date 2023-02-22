@@ -1,9 +1,15 @@
+// const fetch = require("node-fetch")
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 4000
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require("cors")
+const request = require("request")
+const axios = require('axios');
+
+// import fetch from "node-fetch"
+require('dotenv').config();
 app.use(cors({
   origin: "*"
 }));
@@ -80,6 +86,15 @@ app.get("/get-Exterior", getAllExterior);
 // get all Interior trades
 app.get("/get-Interior/trades", getIntTrades);
 
+app.get("/copy-Interior/trades",  (req, res) =>{
+  
+  axios.get("https://bob-project-website.herokuapp.com/get-Interior/trades")
+            .then((data) =>{
+              res.status(200).json({ message: "success", data: data.data})
+                console.log(data.data)
+            })
+
+})
 
 // get all Exterior trades
 app.get("/get-Exterior/trades", getExtTrades)
