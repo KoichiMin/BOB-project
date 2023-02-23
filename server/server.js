@@ -10,9 +10,7 @@ const axios = require('axios');
 
 // import fetch from "node-fetch"
 require('dotenv').config();
-app.use(cors({
-  origin: "*"
-}));
+app.use(cors());
 
 console.log(process.env.PORT)
 const {
@@ -52,7 +50,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 app.use(bodyParser.json());
 
-
+// app.use((req, res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', '*');
+//   next();
+// });
 //*********************************************************
 // Endpoints for Client
 //*********************************************************
