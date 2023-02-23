@@ -14,8 +14,8 @@ root.render(
   // this Provider will enable the Auth0 login. 
   <React.StrictMode>
     <Auth0Provider
-          domain="dev-jhze9czt.us.auth0.com"
-          clientId="fSC4UwM5Ex24d6vtJltlIGZOY7AOT45M"
+          domain={domain}
+          clientId={clientId}
           redirectUri={window.location.origin}
         >   
           <GlobalStyles />
