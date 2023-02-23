@@ -12,6 +12,7 @@ import UserProfilePage from "./pages/UserProfilePage";
 
 const App = () => {
   const  {isAuthenticated} = useAuth0()
+  console.log(process.env)
   return (
     <BrowserRouter>
         <Header/>

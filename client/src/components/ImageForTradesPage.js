@@ -12,7 +12,7 @@ const ImageForTradesPage = ({trade}) =>{
                 .then((res) => res.json())
                 .then((data) =>{
                     setImage(data.urls.full)
-                    console.log(data.urls.full)
+                    // console.log(data.urls.full)
                 })
         }
         if(trade === 'electrician'){
@@ -20,7 +20,7 @@ const ImageForTradesPage = ({trade}) =>{
             .then((res) => res.json())
             .then((data) =>{
                 setImage(data.urls.full)
-                console.log(data.urls.full)
+                // console.log(data.urls.full)
             })
         }
         if(trade === 'landscaping' ){
@@ -28,7 +28,7 @@ const ImageForTradesPage = ({trade}) =>{
             .then((res) => res.json())
             .then((data) =>{
                 setImage(data.urls.full)
-                console.log(data.urls.full)
+                // console.log(data.urls.full)
             })
         }
         if(trade === 'roofing' ){
@@ -36,7 +36,7 @@ const ImageForTradesPage = ({trade}) =>{
             .then((res) => res.json())
             .then((data) =>{
                 setImage(data.urls.full)
-                console.log(data.urls.full)
+                // console.log(data.urls.full)
             })
         }
         if(trade !== 'roofing' && trade !== 'landscaping' && trade !== 'electrician' && trade !== "plumbing"){
@@ -44,7 +44,7 @@ const ImageForTradesPage = ({trade}) =>{
             .then((res) => res.json())
             .then((data) =>{
                 setImage(data.urls.full)
-                console.log(data.urls.full)
+                // console.log(data.urls.full)
             })
         }
     }, [])

@@ -9,7 +9,7 @@ const ExteriorButtonDisplay = ({activate}) =>{
     const [trades, setTrades] = useState([])
     // this fetch is to get all the trades that have an exterior category in their CompanyInfo
     useEffect(() =>{
-        fetch("/get-Exterior/trades")
+        fetch("https://bob-project-website.herokuapp.com/get-Exterior/trades")
             .then((res) => res.json())
             .then((data) =>{
                 setTrades(data.data);

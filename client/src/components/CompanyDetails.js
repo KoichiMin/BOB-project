@@ -13,7 +13,7 @@ const CompanyDetails = ({info}) =>{
     const [enableButton, setEnableButton] = useState(false);
     useEffect(() =>{
         if(user !== undefined){
-            fetch(`/validate-info/${user.email}`)
+            fetch(`https://bob-project-website.herokuapp.com/validate-info/${user.email}`)
                 .then((res) => res.json())
                 .then((data) =>{
                     if(data.data === false){

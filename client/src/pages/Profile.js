@@ -18,7 +18,7 @@ const Profile = () =>{
     const { user} = useAuth0();
     // this useEffect is to look into the database and see if the user has created an email. If they didn't, data.data will be false. If it's true, then I'll use and if statement to see if it's a employer or client 
     useEffect(() =>{
-        fetch(`/validate-info/${user.email}`)
+        fetch(`https://bob-project-website.herokuapp.com/validate-info/${user.email}`)
         .then((res) => res.json())
         .then((data) =>{
             // console.log(data.data)
@@ -28,7 +28,7 @@ const Profile = () =>{
                 setUserInfo(data.user.user)
                 if(data.user.user === 'employer'){
                     setEmployer(true)
-                    console.log(Employer)
+                    // console.log(Employer)
                 } else{
                     setUser(true)
                     // console.log(User)

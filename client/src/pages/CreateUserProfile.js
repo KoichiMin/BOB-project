@@ -16,31 +16,32 @@ const CreateUserProfile = ({info, User}) =>{
                     setImage(data.urls.full)
                 }) 
                 .then(() =>{
-                    fetch(`/get-reservation/${user.email}`)
+                    fetch(`https://bob-project-website.herokuapp.com/get-reservation/${user.email}`)
                         .then((res) => res.json())
                         .then((data) =>{
                             setReservation(data.user)
-                            console.log(reservation)
+                            // console.log(reservation)
                         })
                 })
     }, [])
 
     const DeleteOne = (company) =>{
         // company.preventDefault()
-        fetch(`/delete-reservation/${company}`, {
+        fetch(`https://bob-project-website.herokuapp.com/delete-reservation/${company}`, {
             method: "DELETE"
         })
             .then((res) => {
-                console.log(res)
+                // console.log(res)
                 return res.json()
             })
             .then((data) =>{
-                console.log(data);
+                // console.log(data);
             })
             .catch(err =>{
-                console.log(err.message);
+                // console.log(err.message);
             })
-            window.location.reload();
+            // window.location.reload();
+            navigate("/");
     }
     // hello 
     return(

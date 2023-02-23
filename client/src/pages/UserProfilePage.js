@@ -15,7 +15,7 @@ const UserProfilePage = () =>{
     const [userInfo, setUserInfo] = useState(null);
     
     useEffect(() =>{
-        fetch(`/validate-info/${user.email}`)
+        fetch(`https://bob-project-website.herokuapp.com/validate-info/${user.email}`)
             .then((res) => res.json())
             .then((data) =>{
                 setValidate(data.data)
@@ -34,7 +34,7 @@ const UserProfilePage = () =>{
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        fetch("/add-client", {
+        fetch("https://bob-project-website.herokuapp.com/add-client", {
             method: 'POST',
             headers:{
                 'Content-type':'application/json',
@@ -46,7 +46,7 @@ const UserProfilePage = () =>{
             })
     }).then((res) => res.json())
     .then((data) =>{
-        console.log(data)
+        // console.log(data)
     })
     navigate("/")
 }
