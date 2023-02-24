@@ -46,7 +46,7 @@ const ReservationPage = ({companyInfo}) =>{
     const handleSubmit = (e) => {
         e.preventDefault();
         setConfirmed(true)
-        fetch("https://bob-project-website.herokuapp.com/add-reservation", {
+        fetch("https://bob-project.onrender.com/add-reservation", {
             method: 'POST',
             headers:{
                 'Content-type':'application/json',

@@ -8,10 +8,10 @@ import axios from 'axios'
 const InteriorButtonDisplay = ({activate}) =>{
     const [trades, setTrades] = useState([])
     const fetchData =  () =>{
-        axios.get("https://bob-project-website.herokuapp.com/get-Interior/trades")
+        axios.get("https://bob-project.onrender.com/get-Interior/trades")
         .then((data) =>{
             setTrades(data.data.data);
-            console.log(data.data)
+            // console.log(data.data)
         })
     }
     useEffect(() =>{

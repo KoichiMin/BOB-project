@@ -14,14 +14,14 @@ const TradesPage = () =>{
 
     useEffect(() =>{
         // fetching the description of the trade 
-        fetch(`https://bob-project-website.herokuapp.com/get-description/${trade}`)
+        fetch(`https://bob-project.onrender.com/get-description/${trade}`)
             .then((res) => res.json())
             .then((data) =>{
                 setDescription(data.data[0].description);
             })
             .then(() =>{
                 // fetching all the companies connected to the trade 
-                fetch(`https://bob-project-website.herokuapp.com/get-companies/${trade}`)
+                fetch(`https://bob-project.onrender.com/get-companies/${trade}`)
                     .then((res) => res.json())
                     .then((data) =>{
                         // console.log(data.data);

@@ -6,7 +6,7 @@ const UserProfile = () =>{
     const { user, isAuthenticated, isLoading} = useAuth0();
         useEffect(() =>{
             if(isAuthenticated){
-                fetch("https://bob-project-website.herokuapp.com/send-info", {
+                fetch("https://bob-project.onrender.com/send-info", {
                     method: 'POST',
                     headers : {
                         Accept: "application/json",

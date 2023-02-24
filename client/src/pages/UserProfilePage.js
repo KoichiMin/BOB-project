@@ -15,7 +15,7 @@ const UserProfilePage = () =>{
     const [userInfo, setUserInfo] = useState(null);
     
     useEffect(() =>{
-        fetch(`https://bob-project-website.herokuapp.com/validate-info/${user.email}`)
+        fetch(`https://bob-project.onrender.com/validate-info/${user.email}`)
             .then((res) => res.json())
             .then((data) =>{
                 setValidate(data.data)
@@ -34,7 +34,7 @@ const UserProfilePage = () =>{
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        fetch("https://bob-project-website.herokuapp.com/add-client", {
+        fetch("https://bob-project.onrender.com/add-client", {
             method: 'POST',
             headers:{
                 'Content-type':'application/json',

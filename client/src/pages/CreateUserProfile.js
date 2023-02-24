@@ -16,7 +16,7 @@ const CreateUserProfile = ({info, User}) =>{
                     setImage(data.urls.full)
                 }) 
                 .then(() =>{
-                    fetch(`https://bob-project-website.herokuapp.com/get-reservation/${user.email}`)
+                    fetch(`https://bob-project.onrender.com/get-reservation/${user.email}`)
                         .then((res) => res.json())
                         .then((data) =>{
                             setReservation(data.user)
@@ -27,7 +27,7 @@ const CreateUserProfile = ({info, User}) =>{
 
     const DeleteOne = (company) =>{
         // company.preventDefault()
-        fetch(`https://bob-project-website.herokuapp.com/delete-reservation/${company}`, {
+        fetch(`https://bob-project.onrender.com/delete-reservation/${company}`, {
             method: "DELETE"
         })
             .then((res) => {

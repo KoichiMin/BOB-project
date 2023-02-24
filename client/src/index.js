@@ -5,11 +5,11 @@ import App from './App';
 import { Auth0Provider} from "@auth0/auth0-react"
 import dotenv from 'dotenv';
 dotenv.config();
-console.log(process.env)
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
 const clientId = process.env.REACT_APP_AUTH0_CLIENTID;
-console.log(process.env.REACT_APP_AUTH0_DOMAIN)
+
 root.render(
   // this Provider will enable the Auth0 login. 
   <React.StrictMode>

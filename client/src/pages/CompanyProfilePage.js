@@ -26,7 +26,7 @@ const CompanyProfilePage = () =>{
 
     useEffect(() =>{
         // the validation is needed to check whether the email already exist inside the database. if it doesn't exist then we can conditionally render it to create a new account
-        fetch(`https://bob-project-website.herokuapp.com/validate-info/${user.email}`)
+        fetch(`https://bob-project.onrender.com/validate-info/${user.email}`)
             .then((res) => res.json())
             .then((data) =>{
                 setValidate(data.data)
@@ -35,7 +35,7 @@ const CompanyProfilePage = () =>{
             })
             .then(() =>{
                 // were trying to get all the trades inside a useState to see whether the user is going to created a new trade or not 
-                fetch("https://bob-project-website.herokuapp.com/get-all-trades")
+                fetch("https://bob-project.onrender.com/get-all-trades")
                     .then((res) => res.json())
                     .then((data) =>{
                         setTradeName(data.data)                
@@ -58,7 +58,7 @@ const CompanyProfilePage = () =>{
     const handleSubmit = (e) =>{
         e.preventDefault();
         // this POST is add the user's company inside the database so in the future, the user won't need to create a new profile 
-        fetch("https://bob-project-website.herokuapp.com/add-company", {
+        fetch("https://bob-project.onrender.com/add-company", {
             method: 'POST',
             headers:{
                 'Content-type':'application/json',
@@ -77,7 +77,7 @@ const CompanyProfilePage = () =>{
             console.log(data);
             // if the user is created a new trade then we will need to add that trade description inside the description database
             if(trade === "other"){
-                fetch("https://bob-project-website.herokuapp.com/add-trade-description", {
+                fetch("https://bob-project.onrender.com/add-trade-description", {
                     method: 'POST',
                     headers:{
                         'Content-type':'application/json',

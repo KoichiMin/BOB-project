@@ -14,7 +14,7 @@ const TradeDescriptionPage = () =>{
             .then((data) =>{
                 setImage(data.urls.full)
             }).then(() =>{
-                fetch("https://bob-project-website.herokuapp.com/get-all-description")
+                fetch("https://bob-project.onrender.com/get-all-description")
                     .then((res) => res.json())
                     .then((data) =>{
                         setTradeInfo(data.data)       
