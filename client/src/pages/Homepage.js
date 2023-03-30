@@ -13,7 +13,7 @@ const HomePage = () =>{
     const [interiorTrue, setInteriorTrue] = useState(false)
     const [exteriorTrue, setExteriorTrue] = useState(false)
     const [view, setView] = useState(true);
-
+    const [displayText, setDisplayText] = useState(false)
     useEffect(() =>{
         // this image is fetched from unsplash and set as a background image 
         fetch("https://api.unsplash.com/photos/TRCJ-87Yoh0/?client_id=CuJKZwpX4x1nr-eFcRN7h2npm5sIkCeiv5mxhJNHgRU")
@@ -40,15 +40,29 @@ const HomePage = () =>{
         e.preventDefault();
         setView(prev => !prev)
     }
-
+    useEffect(() =>{
+        const handleResize = () => {
+            // setScreenWidth(window.innerWidth);
+            if (window.innerWidth > 940) {
+                setDisplayText(true)
+            } else {
+                setDisplayText(false)
+            }
+            
+        };
+    
+        window.addEventListener("resize", handleResize);   
+        return () => window.removeEventListener("resize", handleResize);
+    }, [])
 
     return(
         <Wrapper id="wrapper">
             <StyledDiv image={image}>
                     <UserProfile/>
+                {   displayText &&
                     <div className="quote">
                     <Fade left >Love where you live…renovate</Fade>
-                    </div>
+                    </div>}
                 <div className="content">
 
                     <div className="words">Where would you like to renovate? </div>
@@ -94,6 +108,8 @@ const Wrapper = styled.div`
 
         }
     }
+
+    
 
 `
 
@@ -147,7 +163,16 @@ const StyledDiv = styled.div`
             transform: translateY(4px);
         }
     }
+    @media screen and (max-width: 940px) {
+        
+        .words{
+            margin-top: 5vh;
+            text-align: center;
+            margin-bottom: 2vh;
+        }
 
+
+}
 `
 const MidDiv = styled.div`
     display: flex;
