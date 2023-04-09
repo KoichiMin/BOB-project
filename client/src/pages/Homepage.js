@@ -20,6 +20,11 @@ const HomePage = () =>{
             .then((res) => res.json())
             .then((data) =>{
                 setImage(data.urls.full)
+                if (window.innerWidth > 940) {
+                    setDisplayText(true)
+                } else {
+                    setDisplayText(false)
+                }
 
             })
     }, [])

@@ -9,14 +9,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 import TradeDescriptionPage from "./pages/TradeDescriptionPage";
 import Profile from "./pages/Profile";
 import UserProfilePage from "./pages/UserProfilePage";
-//  added this to do a final push lol
+
 const App = () => {
   const  {isAuthenticated} = useAuth0()
   
   return (
     <BrowserRouter>
-        <Header/>
       <main>       
+        <Header/>
         <Routes>    
           <Route exact path="/" element={<HomePage/>}/>
           <Route  path="/trades/:trade" element={<TradesPage/>}/>

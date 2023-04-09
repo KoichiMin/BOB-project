@@ -14,12 +14,10 @@ const Header = () =>{
     
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
-        console.log(isOpen)
     }
     
     useEffect(() =>{
         const handleResize = () => {
-            // setScreenWidth(window.innerWidth);
             if (window.innerWidth > 940) {
                 setIsOpen(true);
                 setToggle(false);
@@ -30,7 +28,7 @@ const Header = () =>{
         };
     
         window.addEventListener("resize", handleResize);   
-        return () => window.removeEventListener("resize", handleResize);
+        // return () => window.removeEventListener("resize", handleResize);
     }, [])
     return(
         !toggle ? 
@@ -83,9 +81,6 @@ const Header = () =>{
 const Wrap = styled.div`
     position: relative;
     background-color: #F1DEDC;
-    /* display: flex;
-    justify-content: space-around;
-    align-items: center; */
     height: 60px;
     scroll-behavior: smooth;
 
@@ -109,7 +104,7 @@ const Wrapper = styled.div`
         text-decoration: none;
     }
 
-   
+
 
 
 
